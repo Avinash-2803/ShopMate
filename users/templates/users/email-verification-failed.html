@@ -1,0 +1,40 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+<div class="min-h-[80vh] flex items-center justify-center bg-red-50 px-4">
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl p-10 text-center border border-red-100">
+        
+        <div class="mb-8 flex justify-center">
+            <div class="rounded-full bg-red-100 p-4">
+                <div class="rounded-full bg-red-500 p-3 shadow-lg shadow-red-200">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-4">
+            Verification Failed
+        </h1>
+
+        <p class="text-gray-600 mb-8">
+            The verification link is invalid or has expired. This can happen if the link was already used or if it's been more than 24 hours.
+        </p>
+
+        <a href="/resend-verification" class="inline-block w-full py-4 px-8 bg-gray-900 hover:bg-black text-white font-bold rounded-2xl shadow-lg transition-all duration-200 active:transform active:scale-95 mb-4">
+            Request New Link
+        </a>
+
+        <a href="/" class="block text-sm text-gray-500 hover:text-gray-800 font-medium transition-colors">
+            Back to Home
+        </a>
+
+        <div class="mt-10 pt-6 border-t border-gray-100">
+            <p class="text-xs text-gray-400">
+                Need help? <a href="/contact" class="text-red-500 hover:underline">Contact Support</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

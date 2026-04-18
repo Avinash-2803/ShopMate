@@ -1,0 +1,67 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+<div class="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-slate-50 to-gray-100 px-4 py-12">
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+        
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Welcome Back</h1>
+            <p class="text-gray-500">Please enter your details to sign in</p>
+        </div>
+
+        <form method="POST" class="space-y-6">
+            {% csrf_token %}
+            
+            <div class="space-y-4 django-form-container">
+                {{ form.as_p }}
+            </div>
+
+            <div class="flex justify-end">
+                <a href="{% url 'password_reset'  %}" class="text-sm font-medium text-black-600 hover:text-gray-500 transition-colors">
+                    Forgot password?
+                </a>
+            </div>
+
+            <button type="submit" class="w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl shadow-lg text-lg font-bold text-white bg-yellow-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform active:scale-[0.98]">
+                Sign In
+            </button>
+        </form>
+
+        <div class="mt-8 text-center border-t border-gray-100 pt-6">
+            <p class="text-gray-600">
+                Don't have an account? 
+                <a href="{% url 'register'  %}" class="font-bold text-black-900 hover:underline underline-offset-4">Sign up</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* This CSS targets the default Django form output to make it look 
+       like proper Tailwind inputs without needing a 3rd party library.
+    */
+    .django-form-container p {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .django-form-container label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151; /* gray-700 */
+    }
+    .django-form-container input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid #D1D5DB; /* gray-300 */
+        outline: none;
+        transition: all 0.2s;
+    }
+    .django-form-container input:focus {
+        border-color: #2563EB; /* blue-600 */
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+</style>
+{% endblock %}
