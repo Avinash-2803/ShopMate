@@ -9,6 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-local-dev-key-change-
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost 127.0.0.1').split(' ')
 
+import cloudinary   
 # ── Apps ─────────────────────────────────────────────────────────────────────
 INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
@@ -16,6 +17,8 @@ INSTALLED_APPS = [
     'users',
     'orders',
     'widget_tweaks',
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,6 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# Cloudinary config
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dawlhqydc'),
+    'API_KEY':    os.environ.get('CLOUDINARY_API_KEY', '469673421476394'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '5giHrKiVRxhN-h6fKZ-fnE9aqp4'),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # ── Middleware ───────────────────────────────────────────────────────────────
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
